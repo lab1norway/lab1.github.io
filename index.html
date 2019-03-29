@@ -1,0 +1,43 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+    <div id="app">
+        <h1>Lista de paises</h1>
+        <ul v-for="country in countries">
+            <li>{{ index }} {{ country }}</li>
+        </ul>
+        <form @submit.prevent="onSubmit">
+            <input v-model="name" id="pais" type="text">
+            <button>Agregar</button>
+
+        </form>
+    </div>
+
+    <script src="https://cdn.jsdelivr.net/npm/vue/dist/vue.js"></script>
+
+    <script>
+        var app = new Vue({
+            el: '#app',
+            data: {
+                countries: [],
+                name: null
+            },
+            methods: {
+                onSubmit: function() {
+                    this.countries.push(this.name)
+                    this.name = ''
+                }
+            },
+        })
+    </script>
+</body>
+
+</html>
